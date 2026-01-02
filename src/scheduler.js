@@ -4,11 +4,11 @@ import Reel from './models/Reel.js';
 import publishReel from './utils/publishReel.js';
 
 export default function startScheduler() {
-  // Runs every 5 minutes
-  // Minimum gap in ms (5 minutes)
-  const MIN_GAP_MS = 5 * 60 * 1000;
+  // Runs every 15 minutes
+  // Minimum gap in ms (15 minutes)
+  const MIN_GAP_MS = 15 * 60 * 1000;
   let lastPublishedTime = 0;
-  cron.schedule('*/5 * * * *', async () => {
+  cron.schedule('*/15 * * * *', async () => {
     const now = new Date();
     // Only publish if enough time has passed since last publish
     if (now.getTime() - lastPublishedTime < MIN_GAP_MS) return;
