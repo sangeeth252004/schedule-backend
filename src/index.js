@@ -8,6 +8,7 @@ import mongoose from 'mongoose';
 import cors from 'cors';
 import reelsRouter from './routes/reels.js';
 import scheduler from './scheduler.js';
+import instagramAuthRouter from './routes/instagramAuth.js';
 
 // Debug: Log Cloudinary env variables at startup
 console.log('CLOUDINARY_CLOUD_NAME:', process.env.CLOUDINARY_CLOUD_NAME);
@@ -33,6 +34,7 @@ mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTop
 
 // Routes
 app.use('/api/reels', reelsRouter);
+app.use('/auth/instagram', instagramAuthRouter);
 
 // Health check
 app.get('/', (req, res) => {
